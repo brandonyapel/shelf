@@ -47,6 +47,7 @@ Pro Mode
 --------
 * logged in users can only remove their objects from the shelf
 * show list of users only to logged in users
+* implement [file stack](https://www.npmjs.com/package/filestack-js) for image upload
 
 Super Mode
 ----------
