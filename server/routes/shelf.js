@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router();
-// var Shelf = require('../models/shelf.schema')
+var Shelf = require('../models/shelf.schema')
 
 router.get('/', function (req, res){
     console.log('/shelf get');
