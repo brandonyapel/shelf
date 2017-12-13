@@ -12,6 +12,7 @@ var passport = require('./strategies/userStrategy');
 var authenticate = require('./routes/authenticate');
 var user = require('./routes/user');
 var register = require('./routes/register');
+var shelf = require('./routes/shelf');
 
 // create the app
 var app = express();
@@ -40,6 +41,7 @@ app.use(passport.session());
 /** Routes **/
 app.use('/register', register);
 app.use('/user', user);
+app.use('/shelf', shelf);
 
 // handles redirect from passport login failure
 app.use('/loginFailure', function(req, res) {
