@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var ShelfSchema = new Schema({
     description: {type: String},
-    username: {type: String, index: {unique: true}},
+    username: { type: Schema.ObjectId, ref: 'User' },
     image: {type: String}
 
 });
