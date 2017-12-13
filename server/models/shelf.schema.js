@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 var ShelfSchema = new Schema({
     description: {type: String},
-    username: {type: String, required: true, index: {unique: true}},
+    username: {type: String, index: {unique: true}},
     image: {type: String}
 
 });

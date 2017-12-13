@@ -15,7 +15,21 @@ router.get('/', function (req, res){
     });
 });
 
+router.post('/', function (req, res) {
+    console.log('/shelf post')
+    var itemToAdd = new Shelf (req.body);
 
+
+    itemToAdd.save(function(errorMakingDatabaseQuery,data){
+        if (errorMakingDatabaseQuery) {
+            console.log('error', errorMakingDatabaseQuery);
+            res.sendStatus(500);
+        } else {
+            res.sendStatus(201);
+        }
+
+    });
+});
 
 
 
