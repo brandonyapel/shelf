@@ -1,12 +1,12 @@
 var passport = require('passport');
 var localStrategy = require('passport-local').Strategy;
-var User = require('../models/user.js');
+var User = require('../models/user');
 
 // Store this user's unique id in the session for later reference
 // Only runs during authentication
 // Stores info on req.session.passport.user
 passport.serializeUser(function(user, done) {
-  console.log('userStrategy -- serialized: ', user);
+  console.log('serialized: ', user);
   done(null, user.id);
 });
 
@@ -18,14 +18,14 @@ passport.deserializeUser(function(id, done) {
     if(err) {
       done(err);
     }
-    console.log('userStrategy -- deserializeUser');
+
     console.log('-----------------------------------------------\ndeserialized: ', user.id);
     done(null, user);
   });
 });
 
 // Does actual work of logging in
-// Called by middleware stack
+// Called by middleware stack in routes/index.js post('/')
 passport.use('local', new localStrategy({
   passReqToCallback: true,
   usernameField: 'username'
@@ -35,7 +35,7 @@ passport.use('local', new localStrategy({
       if(err) {
         throw err;
       }
-      console.log('userStrategy -- User.findOne');
+
       // user variable passed to us from Mongoose if it found a match to findOne() above
       if(!user) {
         // user not found
@@ -52,11 +52,11 @@ passport.use('local', new localStrategy({
           if(isMatch) {
             // all good, populate user object on the session through serializeUser
             console.log('userStrategy.js :: all good');
-            return(done(null, user));
+            return (done(null, user)); // goes to serializeUser() above
           } else {
             // no good.
             console.log('userStrategy.js :: password incorrect');
-            done(null, false, {message: 'Incorrect credentials.'});
+            done(null, false, {message: 'Incorrect credentials.'}); // effectivey responds with a 403 status code
           }
         });
       } // end else

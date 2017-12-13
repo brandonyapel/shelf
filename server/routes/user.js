@@ -3,16 +3,15 @@ var router = express.Router();
 var passport = require('passport');
 var path = require('path');
 
-// FOCUS ON THIS!! -> req.isAuthenticated() & req.user
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
   console.log('get /user route');
   // check if logged in
-  if(req.isAuthenticated()) {
+  if(req.isAuthenticated()) { // req.isAuthenticated() ensures the user is logged in
     // send back user object from database
-    console.log('logged in', req.user);
+    console.log('logged in');
     var userInfo = {
-      username : req.user.username
+      username : req.user.username // req.user comes from passport, means we don't have to trust req.body any more
     };
     res.send(userInfo);
   } else {

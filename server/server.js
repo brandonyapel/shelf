@@ -1,72 +1,55 @@
 var express = require('express');
-var app = express();
 var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var path = require('path');
-
-var passport = require('./strategies/userStrategy');
 var session = require('express-session');
 
+// kick off the mongoose database connection
+require('./modules/database');
+
+// passport strategy includes
+var passport = require('./strategies/userStrategy');
+
 // Route includes
-var index = require('./routes/index');
+var authenticate = require('./routes/authenticate');
 var user = require('./routes/user');
 var register = require('./routes/register');
 
+// create the app
+var app = express();
+var port = process.env.PORT || 5000;
+
 // Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json()); // parses angular data
+app.use(bodyParser.urlencoded({extended: true})); // parses jQuery data
 
 // Serve back static files
 app.use(express.static('./server/public'));
 
 // Passport Session Configuration //
 app.use(session({
-   secret: 'secret',
+   secret: 'secret', // this is a property that is used to uniquely differentiate our app. 'secret' isn't very good. Something like ag;uatw3982398afiuoihr8yr289r28ra would be better
    key: 'user', // this is the name of the req.variable. 'user' is convention, but not required
    resave: 'true',
    saveUninitialized: false,
-   cookie: { maxage: 60000, secure: false }
+   cookie: { maxage: 600000, secure: false } // this session expires after 600 seconds (10 minutes) without an interaction
 }));
 
 // start up passport sessions
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Routes
+/** Routes **/
 app.use('/register', register);
 app.use('/user', user);
-app.use('/', index);
 
-// Mongo Connection //
-var mongoURI = '';
-// process.env.MONGODB_URI will only be defined if you
-// are running on Heroku
-if(process.env.MONGODB_URI != undefined) {
-    // use the string value of the environment variable
-    mongoURI = process.env.MONGODB_URI;
-} else {
-    // use the local database server
-    mongoURI = 'mongodb://localhost:27017/passport';
-}
-
-// var mongoURI = "mongodb://localhost:27017/passport";
-var mongoDB = mongoose.connect(mongoURI).connection;
-
-mongoDB.on('error', function(err){
-   if(err) {
-     console.log("MONGO ERROR: ", err);
-   }
-   res.sendStatus(500);
+// handles redirect from passport login failure
+app.use('/loginFailure', function(req, res) {
+    res.sendStatus(403);
 });
 
-mongoDB.once('open', function(){
-   console.log("Connected to Mongo, meow!");
-});
+// handles login/registration post request
+app.use('/authenticate', authenticate);
 
-// App Set //
-app.set('port', (process.env.PORT || 5000));
-
-// Listen //
-app.listen(app.get("port"), function(){
-   console.log("Listening on port: " + app.get("port"));
+/** Listen **/
+app.listen(port, function(){
+   console.log("Listening on port:", port);
 });

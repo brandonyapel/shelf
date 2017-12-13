@@ -1,23 +1,24 @@
 var myApp = angular.module('myApp', ['ngRoute']);
 
 /// Routes ///
-myApp.config(function($routeProvider, $locationProvider) {
-  $locationProvider.hashPrefix('');
-  console.log('myApp -- config')
+myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $routeProvider
+    .when('/', {
+      redirectTo: 'home'
+    })
     .when('/home', {
       templateUrl: '/views/templates/home.html',
-      controller: 'LoginController as lc',
+      controller: 'LoginController as vm',
     })
     .when('/register', {
       templateUrl: '/views/templates/register.html',
-      controller: 'LoginController as lc'
+      controller: 'LoginController as vm'
     })
     .when('/user', {
       templateUrl: '/views/templates/user.html',
-      controller: 'UserController as uc',
+      controller: 'UserController as vm',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
@@ -26,12 +27,12 @@ myApp.config(function($routeProvider, $locationProvider) {
       templateUrl: '/views/templates/info.html',
       controller: 'InfoController',
       resolve: {
-        getuser : function(UserService){
+        getuser: function (UserService) {
           return UserService.getuser();
         }
       }
     })
     .otherwise({
-      redirectTo: 'home'
+      template: '<h1>404</h1>'
     });
-});
+}]);
