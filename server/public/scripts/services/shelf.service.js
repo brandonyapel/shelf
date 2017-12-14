@@ -30,4 +30,41 @@ myApp.service('ShelfService', ['$http', function ($http) {
             self.item.image = '';
         })
     };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    self.deleteItem = function(item){
+        console.log('deleteItem()', item);
+        $http({
+            method: 'DELETE',
+            url:  '/shelf/' + item._id,
+            data: item
+        }).then(function(response){
+            self.getShelf();
+        });
+    }
 }]);

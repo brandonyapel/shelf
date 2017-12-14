@@ -9,4 +9,9 @@ myApp.controller('UserController', ['UserService', 'ShelfService', function (Use
   //post items to shelf
   self.addItem = ShelfService.addItem
   self.item = ShelfService.item
+
+
+
+
+  self.deleteItem = ShelfService.deleteItem
 }]);
