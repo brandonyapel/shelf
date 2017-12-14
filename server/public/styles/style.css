@@ -86,3 +86,7 @@ li a:hover {
     background-size: 98%;
     color: rgb(255, 255, 255);    
 }
+
+body {
+    background-color: rgb(247, 243, 243)
+}
