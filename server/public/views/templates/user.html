@@ -1,15 +1,11 @@
 <div ng-include="'views/partials/nav.html'"></div>
 <div class="container">
-
-    <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1>
-    <button class="btn btn-default" ng-click="vm.userService.logout()">Log Out</button>
-</div>
-<br>
-<div class="container">
     <div class="jumbotron">
-        <h2 class="pageTitle">Classroom 3 Shelf</h2>
-    </div>
 
+
+        <h1 id="welcome" class="lead">Welcome, {{vm.userObject.userName}}!</h1>
+        <button class="btn btn-default" ng-click="vm.userService.logout()">Log Out</button>
+    </div>
     <div>
         <h3>Add Shelf Item</h3>
         <form ng-submit="vm.addItem(vm.item)">
@@ -40,18 +36,18 @@
                     <td>
                         <img ng-src="{{shelf.image}}" width="100" class="center-block" />
 
-                </td>
-                <td>
-                    <button class="btn btn-default" ng-click="vm.deleteItem(shelf)">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+                    </td>
+                    <td>
+                        <button class="btn btn-default" ng-click="vm.deleteItem(shelf)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <h3>User List</h3>
-    <ul ng-repeat="user in vm.users.list">
-        <li>
-            {{user.username}}
-        </li>
-    </ul>
-</div>
+        <h3>User List</h3>
+        <ul ng-repeat="user in vm.users.list">
+            <li>
+                {{user.username}}
+            </li>
+        </ul>
+    </div>
