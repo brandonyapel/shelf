@@ -40,12 +40,18 @@
                     <td>
                         <img ng-src="{{shelf.image}}" width="100" class="center-block" />
 
-                    </td>
-                    <td>
-                        <button class="btn btn-default" ng-click="vm.deleteItem(item)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                </td>
+                <td>
+                    <button class="btn btn-default" ng-click="vm.deleteItem(item)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>User List</h3>
+    <ul>
+        <li ng-repeat="user in vm.users.list">
+            {{user.username}}
+        </li>
+    </ul>
 </div>
