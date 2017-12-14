@@ -72,3 +72,17 @@ li a:hover {
     text-decoration: underline;
     color: #eee;
 }
+
+.pageTitle {
+    margin-top: 140px;
+    opacity: 1.0;
+    text-shadow: black 0.1em 0.1em 0.1em;
+    font-size: 3em;
+}
+
+.jumbotron {
+    background-image: url('/images/shelf.jpg');
+    background-color: #40434E;
+    background-size: 98%;
+    color: rgb(255, 255, 255);    
+}
