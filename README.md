@@ -1,5 +1,16 @@
 # Full Stack with Auth Group Project
 
+Team Members
+-----------
+Brandon Yapel
+Arick Schaibly
+Ryan DeCook
+
+Planning Docs
+-----------
+![Planning Doc](plan.jpg)
+
+
 Setup Directions
 -----------
 * Run `npm install`,
