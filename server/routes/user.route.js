@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-var path = require('path');
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
