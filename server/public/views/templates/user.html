@@ -29,13 +29,13 @@
                     {{shelf.description}}
                 </td>
                 <td>
-                    {{shelf.username}}
+                    {{shelf.user}} User Goes Here
                 </td>
-                <td img ng-src="{{shelf.image}}" width="150" class="center-block" />
+                <td> <img ng-src="{{shelf.image}}" width="100" class="center-block" />
 
                 </td>
                 <td>
-                    <button class="btn btn-default" ng-click="vm.deleteItem(item)">Delete</button>                    
+                    <button class="btn btn-default" ng-click="vm.deleteItem(item)">Delete</button>
                 </td>
             </tr>
         </tbody>
