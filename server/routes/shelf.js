@@ -54,4 +54,36 @@ router.get('/users', function (req, res){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.delete('/:id', function(req,res){
+    console.log('/shelf delete');
+    Shelf.remove({_id: req.params.id}, function(errorMakingDatabaseQuery, result){
+        if(errorMakingDatabaseQuery){
+            console.log('error with shelf delete', errorMakingDatabaseQuery);
+        } else {
+            console.log('result', result);
+            res.sendStatus(200);
+        }
+    })
+
+});
+
+
+
 module.exports = router;

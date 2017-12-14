@@ -32,6 +32,43 @@ myApp.service('ShelfService', ['$http', function ($http) {
         })
     };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    self.deleteItem = function(item){
+        console.log('deleteItem()', item);
+        $http({
+            method: 'DELETE',
+            url:  '/shelf/' + item._id,
+            data: item
+        }).then(function(response){
+            self.getShelf();
+        });
+    }
+
     self.getUsers = function () {
         console.log("getUsers()");
         $http({
@@ -45,4 +82,5 @@ myApp.service('ShelfService', ['$http', function ($http) {
     }
 
     self.getUsers();
+
 }]);
