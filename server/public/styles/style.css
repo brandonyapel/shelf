@@ -84,6 +84,8 @@ li a:hover {
     background-size: 100%;
     color: rgb(255, 255, 255);
     height: 450px;
+    text-shadow: rgb(167, 164, 164) 0.05em 0.05em 0.05em;
+
 }
 
 body {
