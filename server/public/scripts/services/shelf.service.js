@@ -5,7 +5,7 @@ myApp.service('ShelfService', ['$http', function ($http) {
 
     self.shelf = { list: '' };
     self.item = { description: '', image: '' };
-    self.users = { list: ''};
+    self.users = { list: '' };
 
     self.getShelf = function () {
         console.log("getShelf()");
@@ -32,13 +32,13 @@ myApp.service('ShelfService', ['$http', function ($http) {
         })
     };
 
-    self.deleteItem = function(item){
+    self.deleteItem = function (item) {
         console.log('deleteItem()', item);
         $http({
             method: 'DELETE',
-            url:  '/shelf/' + item._id,
+            url: '/shelf/' + item._id,
             data: item
-        }).then(function(response){
+        }).then(function (response) {
             self.getShelf();
         });
     }
@@ -57,24 +57,37 @@ myApp.service('ShelfService', ['$http', function ($http) {
 
     self.getUsers();
 
-    self.uploadImage= function (){
+    self.uploadImage = function () {
         console.log('uploadImage()')
         var fsClient = filestack.init('AAgY4DPJQq2TPxnfxB2Jgz');
         function openPicker() {
             fsClient.pick({
-              fromSources:["local_file_system","url","imagesearch","facebook","instagram","googledrive","dropbox","evernote","flickr","box","github","webcam","video","audio"],
-              accept:["image/*"],
-              maxSize:102400000,
-              maxFiles:1,
-              minFiles:1
-            }).then(function(response) {
-              // declare this function to handle response
-              self.item.image = response.filesUploaded[0].url;
-              console.log(self.item)
+                fromSources: ["local_file_system", "url", "imagesearch", "facebook", "instagram", "googledrive", "dropbox", "evernote", "flickr", "box", "github", "webcam", "video", "audio"],
+                accept: ["image/*"],
+                maxSize: 102400000,
+                maxFiles: 1,
+                minFiles: 1
+            }).then(function (response) {
+                // declare this function to handle response
+                self.item.image = response.filesUploaded[0].url;
+                console.log(self.item)
             });
-          }
-          openPicker();
-        
+        }
+        openPicker();
+
+    }
+
+    self.getUsersItems = function (userclicked) {
+        var userSelected = {username: userclicked}
+        console.log('getUsersItems()',userSelected.username);
+        $http({
+            method: 'GET',
+            url: '/shelf/usersitems',
+            params: userSelected
+        }).then(function (response) {
+            console.log('response', response);
+            self.shelf.list = response.data;
+        });
     }
 
 }]);

@@ -42,7 +42,7 @@
                         {{shelf.description}}
                     </td>
                     <td>
-                        {{shelf.username}}
+                        <a class="badge" ng-click="vm.getUsersItems(shelf.username)">{{shelf.username}}</a>
                     </td>
                     <td>
                         <img ng-src="{{shelf.image}}" width="100" class="center-block" />
@@ -57,8 +57,8 @@
 
         <h3>User List</h3>
         <ul ng-repeat="user in vm.users.list">
-            <li>
-                {{user.username}}
+            <li ng-click="vm.getUsersItems(user.username)">
+               <a class="badge">{{user.username}}</a>    
             </li>
         </ul>
     </div>

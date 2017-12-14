@@ -52,7 +52,18 @@ router.get('/users', function (req, res){
     });
 });
 
-
+router.get('/usersitems', function (req, res){
+    console.log('/shelf/usersitems get', req.query.username);
+    Shelf.find({username: req.query.username}, function(errorMakingDatabaseQuery, data){
+        if (errorMakingDatabaseQuery){
+            console.log('error with find', errorMakingDatabaseQuery);
+            res.sendStatus(500);
+        }else{
+            console.log(data);
+            res.send(data);
+        }
+    });
+});
 
 
 

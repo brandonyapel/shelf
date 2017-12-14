@@ -17,9 +17,11 @@ myApp.controller('UserController', ['UserService', 'ShelfService', function (Use
   self.deleteItem = ShelfService.deleteItem
 
   //users list
-  self.users = ShelfService.users
-
-  self.uploadImage = ShelfService.uploadImage
+  self.users = ShelfService.users;
+  //File stack function
+  self.uploadImage = ShelfService.uploadImage;
+  //get only items for user function 
+  self.getUsersItems = ShelfService.getUsersItems;
 
 }]);
 
