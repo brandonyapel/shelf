@@ -32,32 +32,6 @@ myApp.service('ShelfService', ['$http', function ($http) {
         })
     };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     self.deleteItem = function(item){
         console.log('deleteItem()', item);
         $http({
@@ -83,4 +57,30 @@ myApp.service('ShelfService', ['$http', function ($http) {
 
     self.getUsers();
 
+    self.uploadImage= function (){
+        console.log('uploadImage()')
+        var fsClient = filestack.init('AAgY4DPJQq2TPxnfxB2Jgz');
+        function openPicker() {
+            fsClient.pick({
+              fromSources:["local_file_system","url","imagesearch","facebook","instagram","googledrive","dropbox","evernote","flickr","box","github","webcam","video","audio"],
+              accept:["image/*"],
+              maxSize:102400000,
+              maxFiles:1,
+              minFiles:1
+            }).then(function(response) {
+              // declare this function to handle response
+              self.item.image = response.filesUploaded[0].url;
+              console.log(self.item)
+            });
+          }
+          openPicker();
+        
+    }
+
 }]);
+
+
+
+
+
+

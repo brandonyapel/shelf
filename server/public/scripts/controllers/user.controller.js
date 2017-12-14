@@ -19,4 +19,7 @@ myApp.controller('UserController', ['UserService', 'ShelfService', function (Use
   //users list
   self.users = ShelfService.users
 
+  self.uploadImage = ShelfService.uploadImage
+
 }]);
+
