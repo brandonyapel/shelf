@@ -1,6 +1,8 @@
 var express = require('express')
 var router = express.Router();
 var Shelf = require('../models/shelf.schema')
+var passport = require('passport');
+var path = require('path');
 
 router.get('/', function (req, res){
     console.log('/shelf get');
@@ -17,7 +19,12 @@ router.get('/', function (req, res){
 
 router.post('/', function (req, res) {
     console.log('/shelf post')
-    var itemToAdd = new Shelf (req.body);
+
+    var itemToAdd = new Shelf ({
+        description : req.body.description,
+        username : req.user.username,
+        image : req.body.image
+      });
 
 
     itemToAdd.save(function(errorMakingDatabaseQuery,data){
