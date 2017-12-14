@@ -5,6 +5,7 @@ myApp.service('ShelfService', ['$http', function ($http) {
 
     self.shelf = { list: '' };
     self.item = { description: '', image: '' };
+    self.users = { list: ''};
 
     self.getShelf = function () {
         console.log("getShelf()");
@@ -67,4 +68,19 @@ myApp.service('ShelfService', ['$http', function ($http) {
             self.getShelf();
         });
     }
+
+    self.getUsers = function () {
+        console.log("getUsers()");
+        $http({
+            method: 'GET',
+            url: '/shelf/users'
+        }).then(function (response) {
+            console.log('response', response);
+            self.users.list = response.data;
+            console.log(self.users.list);
+        });
+    }
+
+    self.getUsers();
+
 }]);

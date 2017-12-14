@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router();
 var Shelf = require('../models/shelf.schema')
+var User = require('../models/user')
 var passport = require('passport');
 var path = require('path');
 
@@ -35,6 +36,19 @@ router.post('/', function (req, res) {
             res.sendStatus(201);
         }
 
+    });
+});
+
+router.get('/users', function (req, res){
+    console.log('/shelf/users get');
+    User.find({}, function(errorMakingDatabaseQuery, data){
+        if (errorMakingDatabaseQuery){
+            console.log('error with find', errorMakingDatabaseQuery);
+            res.sendStatus(500);
+        }else{
+            console.log(data);
+            res.send(data);
+        }
     });
 });
 

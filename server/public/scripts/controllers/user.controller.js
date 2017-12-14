@@ -13,5 +13,10 @@ myApp.controller('UserController', ['UserService', 'ShelfService', function (Use
 
 
 
+
   self.deleteItem = ShelfService.deleteItem
+
+  //users list
+  self.users = ShelfService.users
+
 }]);

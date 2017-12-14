@@ -6,13 +6,15 @@ var session = require('express-session');
 require('./modules/database');
 
 // passport strategy includes
-var passport = require('./strategies/userStrategy');
+var passport = require('./strategies/user.strategy');
 
 // Route includes
+
 var authenticate = require('./routes/authenticate');
 var user = require('./routes/user');
 var register = require('./routes/register');
 var shelf = require('./routes/shelf');
+
 
 // create the app
 var app = express();
