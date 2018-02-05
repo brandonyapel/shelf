@@ -90,6 +90,10 @@ myApp.service('ShelfService', ['$http', function ($http) {
         });
     }
 
+    
+        self.orderByField = 'username';
+        self.reverseSort = false;
+
 }]);
 
 

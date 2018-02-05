@@ -23,5 +23,7 @@ myApp.controller('UserController', ['UserService', 'ShelfService', function (Use
   //get only items for user function 
   self.getUsersItems = ShelfService.getUsersItems;
 
+  self.orderByField = ShelfService.getUsersItems;
+  self.reverseSort = ShelfService.reverseSort;
 }]);
 
