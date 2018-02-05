@@ -39,8 +39,8 @@ This will require some research, design, an implementation. Update this README.m
 
 Screen Shots
 ------------
-![login-view](./demoimages/login-view.png)
-![logged-in-view](./demoimages/logged-in-view.png)
+![login-view](./demo-images/login-view.png)
+![logged-in-view](./demo-images/logged-in-view.png)
 
 
 Features
