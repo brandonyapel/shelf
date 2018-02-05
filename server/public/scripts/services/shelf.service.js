@@ -59,7 +59,7 @@ myApp.service('ShelfService', ['$http', function ($http) {
 
     self.uploadImage = function () {
         console.log('uploadImage()')
-        var fsClient = filestack.init('AAgY4DPJQq2TPxnfxB2Jgz');
+        var fsClient = filestack.init('ARZfGPoJpQYKvfeabBd4Bz');
         function openPicker() {
             fsClient.pick({
                 fromSources: ["local_file_system", "url", "imagesearch", "facebook", "instagram", "googledrive", "dropbox", "evernote", "flickr", "box", "github", "webcam", "video", "audio"],
