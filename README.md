@@ -1,4 +1,6 @@
-# Full Stack with Auth Group Project
+# Full Stack Shelf with Auth Group Project
+[live-demo](https://shelf-brandonyapel.herokuapp.com/#!/home)
+
 
 Team Members
 -----------
