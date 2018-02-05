@@ -52,9 +52,15 @@ Features
 * image url (optional)
 
 [x] only logged in users can remove objects from the shelf
+
 [x] styling
+
 [x] logged in users can only remove their objects from the shelf
+
 [x] show list of users only to logged in users
+
 [x] implement [file stack](https://www.npmjs.com/package/filestack-js) for image upload
+
 [ ] filter output by user (click on a user to only show items by that user)
+
 [ ] users can re-order shelf
