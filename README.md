@@ -28,6 +28,9 @@ Technologies
 * Passport
 * git
 * github
+* mlab
+* heroku
+* filestack
 
 Project Description
 -------------------
