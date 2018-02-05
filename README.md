@@ -10,7 +10,7 @@ Ryan DeCook
 
 Planning Docs
 -----------
-![Planning Doc](plan.jpg)
+![Planning Doc](plan.JPG)
 
 
 Setup Directions
